@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
       <ToastContainer />
       <Navbar />
-      <div className='bg-backgroundColor'>
+      <div className='bg-lightColor mt-12'>
       <Routes>
         <Route path='/' element={<Home />} />
       </Routes>

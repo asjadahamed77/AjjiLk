@@ -38,26 +38,49 @@ const Navbar = () => {
               Phones <IoMdArrowDropdown />
             </li>
           </Link>
-          <div className="hidden group-hover:flex absolute rounded-xl py-4 top-9 right-0 left-0 bg-lightColor justify-center overflow-x-scroll border w-[100vw] z-10">
+          <div className="hidden group-hover:flex absolute rounded-xl py-4 top-9 right-0 left-0 bg-backgroundColor justify-center overflow-x-scroll border w-[100vw] z-10">
             <Link
               to={"/phones/iphones"}
-              className="block px-4 py-2 hover:bg-gray-100 text-mainColor"
+              className="block px-4 py-2 hover:bg-lightColor text-mainColor"
             >
               iPhones
             </Link>
             <Link
               to={"/phones/samsung"}
-              className="block px-4 py-2 hover:bg-gray-100 text-mainColor"
+              className="block px-4 py-2 hover:bg-lightColor text-mainColor"
             >
               Samsung
             </Link>
             <Link
               to={"/phones/xiaomi"}
-              className="block px-4 py-2 hover:bg-gray-100 text-mainColor"
+              className="block px-4 py-2 hover:bg-lightColor text-mainColor"
             >
               Xiaomi
             </Link>
-            {/* Add more phone brands here */}
+            <Link to={"/phones/google"} className="block px-4 py-2 hover:bg-lightColor text-mainColor">
+              Google
+            </Link>
+            <Link to={"/phones/one-plus"} className="block px-4 py-2 hover:bg-lightColor text-mainColor">
+              One Plus
+            </Link>
+            <Link to={"/phones/oppo"} className="block px-4 py-2 hover:bg-lightColor text-mainColor">
+              Oppo
+            </Link>
+            <Link to={"/phones/vivo"} className="block px-4 py-2 hover:bg-lightColor text-mainColor">
+              Vivo
+            </Link>
+            <Link to={"/phones/huawei"} className="block px-4 py-2 hover:bg-lightColor text-mainColor">
+              Huawei
+            </Link>
+            <Link to={"/phones/sony"} className="block px-4 py-2 hover:bg-lightColor text-mainColor">
+              Sony
+            </Link>
+            <Link to={"/phones/nokia"} className="block px-4 py-2 hover:bg-lightColor text-mainColor">
+              Nokia
+            </Link>
+            <Link to={"/phones/realme"} className="block px-4 py-2 hover:bg-lightColor text-mainColor">
+              Realme
+            </Link>
           </div>
         </div>
         <Link to={"/sell-a-phone"} className="text-md hover:opacity-85 text-mainColor font-medium">
