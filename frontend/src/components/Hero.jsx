@@ -3,7 +3,7 @@ import hero_image from '../assets/hero-phone.png';
 import { Link } from 'react-router-dom';
 const Hero = () => {
   return (
-    <div className="flex h-[95vh] flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16 sm:px-10 lg:px-16 px-8 py-16 lg:py-32">
+    <div className="flex h-[95vh] pt-24 pb-8 flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 sm:px-10 lg:px-16 px-8  lg:py-32">
       {/* Text Section */}
       <div className="flex-1 text-center lg:text-left">
         <h1 className="text-mainColor font-bold text-3xl sm:text-4xl lg:text-5xl leading-snug lg:leading-tight">
