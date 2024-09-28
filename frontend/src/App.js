@@ -7,6 +7,7 @@ import AllPhones from './pages/AllPhones';
 import SellAPhone from './pages/SellAPhone';
 import MyListings from './pages/MyListings';
 import ContactUs from './pages/ContactUs';
+import AboutUs from './pages/AboutUs';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
         <Route path='/sell-a-phone' element={<SellAPhone />} />
         <Route path='/my-listings' element={<MyListings />} />
         <Route path='/contact-us' element={<ContactUs />} />
+        <Route path='/about-us' element={<AboutUs />} />
+      
       </Routes>
       </div>
       </BrowserRouter>
