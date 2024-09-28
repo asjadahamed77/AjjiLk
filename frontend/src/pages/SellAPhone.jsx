@@ -98,7 +98,7 @@ const SellAPhone = () => {
           <input type="text" placeholder='Feature 3...' className='max-w-[400px] w-full pl-4 p-2 mt-1 rounded bg-transparent border border-backgroundColor' />
           <input type="text" placeholder='Feature 4...' className='max-w-[400px] w-full pl-4 p-2 mt-1 rounded bg-transparent border border-backgroundColor' />
         </label>
-        <button className='flex items-start px-4 py-1 bg-mainColor text-lightColor max-w-[170px] text-center rounded-lg hover:opacity-85' type='submit'>
+        <button className='flex items-start px-4 py-1 bg-mainColor text-lightColor max-w-[170px] justify-center rounded-lg hover:opacity-85' type='submit'>
           SELL THIS PHONE
         </button>
       </form>

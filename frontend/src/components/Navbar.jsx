@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { FaShoppingBag, FaUserCircle } from "react-icons/fa";
+import {  FaUserCircle } from "react-icons/fa";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { MdClose } from "react-icons/md";
 
@@ -91,21 +91,17 @@ const Navbar = () => {
 
       {/* User Icons */}
       <div className="flex items-center text-mainColor gap-4">
-        <div className="text-xl">
-          <Link to={"/cart"}>
-            <FaShoppingBag />
-          </Link>
+      <div>
+          <button className="bg-transparent hover:text-lightColor hover:bg-mainColor ml-4 text-mainColor border-2 border-mainColor font-semibold px-3 rounded-full py-0.5">
+            Logout
+          </button>
         </div>
         <div className="text-2xl">
           <Link to={"/profile"}>
             <FaUserCircle />
           </Link>
         </div>
-        <div>
-          <button className="bg-transparent hover:text-lightColor hover:bg-mainColor ml-4 text-mainColor border-2 border-mainColor font-semibold px-3 rounded-full py-0.5">
-            Logout
-          </button>
-        </div>
+        
       </div>
 
       {/* Mobile Menu */}
