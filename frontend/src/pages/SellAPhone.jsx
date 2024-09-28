@@ -4,8 +4,8 @@ import sampleImage from '../assets/sampleImage.jpg';
 const SellAPhone = () => {
   const [images, setImages] = useState([sampleImage, sampleImage, sampleImage, sampleImage]);
 
-  const handleImageChange = (event, index) => {
-    const file = event.target.files[0];
+  const handleImageChange = (e, index) => {
+    const file = e.target.files[0];
     if (file) {
       const newImageURL = URL.createObjectURL(file);
       setImages((prevImages) => {
@@ -28,7 +28,7 @@ const SellAPhone = () => {
                 <img
                   className='w-20 border rounded border-backgroundColor cursor-pointer'
                   src={image}
-                  alt={`Phone ${index + 1}`}
+                    alt=''
                   onClick={() => document.getElementById(`imageInput${index}`).click()}
                 />
                 <input
@@ -36,7 +36,7 @@ const SellAPhone = () => {
                   type="file"
                   accept="image/*"
                   style={{ display: 'none' }}
-                  onChange={(event) => handleImageChange(event, index)}
+                  onChange={(e) => handleImageChange(e, index)}
                 />
               </div>
             ))}
@@ -86,6 +86,10 @@ const SellAPhone = () => {
             <option value="brandnew">Brand New</option>
             <option value="used">Used</option>
           </select>
+        </label>
+        <label htmlFor="contactNumber">
+          <p className='text-[18px]'>Phone Number:</p>
+          <input type="number" placeholder='Enter Here...' className='max-w-[400px] w-full pl-4 p-2 mt-1 rounded bg-transparent border border-backgroundColor' required />
         </label>
         <label htmlFor="phoneFeatures" className='flex flex-col'>
           <p className='text-[18px]'>Phone Features:</p>
