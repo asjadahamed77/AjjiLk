@@ -32,29 +32,20 @@ const Navbar = () => {
         <Link to={"/"} className="text-md hover:opacity-85 text-mainColor font-medium">
           <li>Home</li>
         </Link>
-        <div className="group text-md hover:opacity-85 text-mainColor font-medium">
-          <Link to={"/phones"} className="flex items-center gap-1">
-            <li className="flex items-center">
-              Phones <IoMdArrowDropdown />
-            </li>
-          </Link>
-          <div className="hidden group-hover:flex absolute rounded-xl py-4 top-9 right-0 left-0 bg-backgroundColor justify-center overflow-x-scroll border w-[100vw] z-10">
-            <Link
-              to={"/phones/iphones"}
-              className="block px-4 py-2 hover:bg-lightColor text-mainColor"
-            >
+
+        {/* Phones Dropdown */}
+        <li className="group relative text-md hover:opacity-85 text-mainColor font-medium cursor-pointer">
+          <div className="flex items-center gap-1">
+            <span>Phones</span> <IoMdArrowDropdown />
+          </div>
+          <div className="hidden group-hover:flex flex-col absolute rounded-xl py-2 top-full left-0 bg-white border w-52 z-10">
+            <Link to={"/phones/iphones"} className="block px-4 py-2 hover:bg-lightColor text-mainColor">
               iPhones
             </Link>
-            <Link
-              to={"/phones/samsung"}
-              className="block px-4 py-2 hover:bg-lightColor text-mainColor"
-            >
+            <Link to={"/phones/samsung"} className="block px-4 py-2 hover:bg-lightColor text-mainColor">
               Samsung
             </Link>
-            <Link
-              to={"/phones/xiaomi"}
-              className="block px-4 py-2 hover:bg-lightColor text-mainColor"
-            >
+            <Link to={"/phones/xiaomi"} className="block px-4 py-2 hover:bg-lightColor text-mainColor">
               Xiaomi
             </Link>
             <Link to={"/phones/google"} className="block px-4 py-2 hover:bg-lightColor text-mainColor">
@@ -82,7 +73,8 @@ const Navbar = () => {
               Realme
             </Link>
           </div>
-        </div>
+        </li>
+
         <Link to={"/sell-a-phone"} className="text-md hover:opacity-85 text-mainColor font-medium">
           <li>Sell a Phone</li>
         </Link>
@@ -110,7 +102,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div>
-          <button className="bg-mainColor hover:opacity-80 text-lightColor px-3 rounded-xl py-1">
+          <button className="bg-transparent hover:text-lightColor hover:bg-mainColor ml-4 text-mainColor border-2 border-mainColor font-semibold px-3 rounded-full py-0.5">
             Logout
           </button>
         </div>
