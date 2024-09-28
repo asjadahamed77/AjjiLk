@@ -35,9 +35,9 @@ const Navbar = () => {
 
         {/* Phones Dropdown */}
         <li className="group relative text-md hover:opacity-85 text-mainColor font-medium cursor-pointer">
-          <div className="flex items-center gap-1">
+          <Link to={'/phones'}><div className="flex items-center gap-1">
             <span>Phones</span> <IoMdArrowDropdown />
-          </div>
+          </div></Link>
           <div className="hidden group-hover:flex flex-col absolute rounded-xl py-2 top-full left-0 bg-white border w-52 z-10">
             <Link to={"/phones/iphones"} className="block px-4 py-2 hover:bg-lightColor text-mainColor">
               iPhones
