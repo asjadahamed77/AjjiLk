@@ -9,7 +9,7 @@ const Login = () => {
   const { token, setToken } = useContext(ShopContext);
   const [formData, setFormData] = useState({
     email: '',
-    password: '',
+    password: ''
   });
   const {  email, password } = formData;
 

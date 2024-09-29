@@ -1,12 +1,23 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { IoMdArrowDropdown } from "react-icons/io";
 import {  FaUserCircle } from "react-icons/fa";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { MdClose } from "react-icons/md";
+import { ShopContext } from "../context/ShopContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const {token,setToken} = useContext(ShopContext)
+const navigate = useNavigate()
+
+const logout = ()=>{
+  localStorage.removeItem("token")
+  setToken("")
+  navigate("/login")
+  toast.success("Logged Out Successfully!")
+}
 
   return (
     <div className="flex items-center lg:justify-evenly justify-between md:px-5 md:py-2 py-4 px-4 shadow-md box-border bg-white z-100 fixed top-0 left-0 right-0">
@@ -92,11 +103,22 @@ const Navbar = () => {
       {/* User Icons */}
       <div className="flex items-center text-mainColor gap-4">
       <div>
-          <Link to={'/signup'}>
-          <button className="bg-transparent hover:text-lightColor hover:bg-mainColor ml-4 text-mainColor border-2 border-mainColor font-semibold px-3 rounded-full py-0.5">
-            Sign Up
-          </button>
-          </Link>
+        
+         {
+          token? (
+            
+            <button onClick={logout} className="bg-transparent hover:text-lightColor hover:bg-mainColor ml-4 text-mainColor border-2 border-mainColor font-semibold px-3 rounded-full py-0.5">
+              Logout
+            </button>
+           
+          ) : (
+            <Link to={'/signup'}>
+            <button className="bg-transparent hover:text-lightColor hover:bg-mainColor ml-4 text-mainColor border-2 border-mainColor font-semibold px-3 rounded-full py-0.5">
+              Sign Up
+            </button>
+            </Link>
+          )
+         }
         </div>
         <div className="text-2xl">
           <Link to={"/profile"}>
