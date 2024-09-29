@@ -9,6 +9,8 @@ import MyListings from './pages/MyListings';
 import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
 import Profile from './pages/Profile';
+import SignUp from './pages/SignUp';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route path='/contact-us' element={<ContactUs />} />
         <Route path='/about-us' element={<AboutUs />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/login' element={<Login />} />
       
       </Routes>
       </div>

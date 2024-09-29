@@ -92,9 +92,11 @@ const Navbar = () => {
       {/* User Icons */}
       <div className="flex items-center text-mainColor gap-4">
       <div>
+          <Link to={'/signup'}>
           <button className="bg-transparent hover:text-lightColor hover:bg-mainColor ml-4 text-mainColor border-2 border-mainColor font-semibold px-3 rounded-full py-0.5">
-            Logout
+            Sign Up
           </button>
+          </Link>
         </div>
         <div className="text-2xl">
           <Link to={"/profile"}>
