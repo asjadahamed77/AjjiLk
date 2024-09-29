@@ -5,9 +5,9 @@ const AllPhones = () => {
     const [showCategory,setShowCategory] = useState(false)
 
   return (
-    <div className='text-mainColor'>
+    <div className='text-mainColor flex flex-col sm:flex-row'>
       {/* Filter Category */}
-      <div className='pl-10 pt-10 w-[250px] '>
+      <div className='pl-10 pt-10 w-[250px]'>
         <div className='border border-backgroundColor p-4'>
         <div onClick={()=> setShowCategory(prev => !prev)} className='flex gap-2 items-center '>
             <p className='font-semibold text-[20px]'>Filter Category</p>
@@ -65,8 +65,16 @@ const AllPhones = () => {
       </div>
 
     {/* Showing all the Phones */}
-    <div>
-        
+    <div className='flex-1 pt-6 px-6 '>
+        <div className='flex justify-between'>
+            <h1 className='text-2xl text-mainColor font-semibold'>All Mobile Phones</h1>
+            <select className=' md:mr-8 lg:mr-10 xl:mr-16  mr-4 text-sm sm:text-base rounded-lg bg-lightColor border border-mainColor text-mainColor '>
+                <option value="">Sort by: Relavant</option>
+                <option value="low-to-high">Sort by: Low to High</option>
+                <option value="high-to-low">Sort by: High to Low</option>
+            </select>
+        </div>
+        <hr className='h-1 bg-secondaryColor w-[98%] sm:w-[95%] mt-1' />
     </div>
 
     </div>
