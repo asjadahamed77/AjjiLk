@@ -6,7 +6,7 @@ const SideBar = () => {
 
 
   return (
-    <ul className='flex flex-col text-mainColor font-medium border border-secondaryColor w-[160px] ml-4 mt-20 text-[18px]'>
+    <ul className='fixed left-4 top-20 w-[160px] flex flex-col text-mainColor font-medium border border-secondaryColor text-[18px]'>
       <Link to={'/request'}>
         <li className={`border border-secondaryColor pl-4 py-2 ${
           location.pathname === '/request' ? 'bg-mainColor text-lightColor' : 'bg-lightColor'

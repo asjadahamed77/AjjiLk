@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 const Navbar = () => {
   return (
-    <div className='flex justify-between px-8 sm:py-2 py-3 shadow-md bg-white'>
+    <div className=' fixed top-0 right-0 left-0 flex justify-between px-8 sm:py-2 py-3 shadow-md bg-white'>
       <div>
         <h1 className="text-2xl text-mainColor font-semibold">
           <Link to={"/"}>
