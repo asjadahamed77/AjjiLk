@@ -16,7 +16,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-      <ToastContainer />
+      <ToastContainer position='top-center' />
       <Navbar />
       <div className='bg-lightColor mt-12'>
       <Routes>
