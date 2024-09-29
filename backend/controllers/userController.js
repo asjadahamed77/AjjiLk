@@ -77,6 +77,21 @@ const registerUser = async (req, res) => {
   }
 };
 
+// Get User Details 
+const getUserDetails = async (req, res) => {
+  try {
+    const user = req.user; // User is set by the requireAuth middleware
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+    res.json({ success: true, user });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 // Route for Admin Login
 const adminLogin = async (req, res) => {
   try {
@@ -94,4 +109,4 @@ const adminLogin = async (req, res) => {
   }
 };
 
-export { loginUser, registerUser, adminLogin };
+export { loginUser, registerUser, adminLogin, getUserDetails };
