@@ -4,12 +4,24 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar';
 import SideBar from './components/SideBar';
 import Requests from './pages/Requests';
+import { useEffect, useState } from 'react';
+import Login from './pages/Login';
 function App() {
+  const [token, setToken] = useState(localStorage.getItem('token')?localStorage.getItem("token"):"");
+  useEffect(()=>{
+    localStorage.setItem("token",token)
+  },[token])
   return (
-    <div className='bg-lightColor min-h-screen'>
+    <div>
+    {
+      token === ''?(
+        <Login setToken={setToken} />
+      ): (
+        <>
+        <div className='bg-lightColor min-h-screen'>
       <BrowserRouter>
       <ToastContainer />
-      <Navbar />
+      <Navbar setToken={setToken} />
       <div className='flex'>
         <div className='w-[180px] '>
       <SideBar />
@@ -21,6 +33,10 @@ function App() {
       </div>
       </div>
       </BrowserRouter>
+    </div>
+        </>
+      )
+    }
     </div>
   );
 }

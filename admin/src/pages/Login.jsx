@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { ShopContext } from '../context/ShopContext';
-import backendUrl from '../helpers/backendUrl';
+import React, {  useState } from 'react'
+
+
 import axios from 'axios';
 import { toast } from 'react-toastify';
-const Login = () => {
-  const navigate = useNavigate();
-  const { token, setToken } = useContext(ShopContext);
+import backendUrl from '../helpers/backendUrl';
+const Login = ({setToken}) => {
+  
+
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -19,13 +19,12 @@ const Login = () => {
   const submitHandler = async (e)=>{
     e.preventDefault();
     try {
-      const response = await axios.post(`${backendUrl}/api/user/login`, formData);
+      const response = await axios.post(`${backendUrl}/api/user/admin`, formData);
       
       if (response.data.success) {
         toast.success(response.data.message);
         setToken(response.data.token);
-        localStorage.setItem("token", response.data.token);
-        navigate("/");  
+         
       } else {
         toast.error(response.data.message);
       }
@@ -36,16 +35,12 @@ const Login = () => {
       console.error(errorMessage);
     }
   }
-  useEffect(()=>{
-    if(token){
-      navigate("/")
-    }
-  },[token])
+
   return (
     <div className='pt-20 min-h-screen'>
       
       <form onSubmit={submitHandler} className='flex flex-col bg-white pt-6 pb-4 px-4 gap-3 max-w-[400px] mx-auto rounded-md'>
-      <h1 className='text-2xl text-mainColor font-semibold mb-2'>Login to your Account</h1>
+      <h1 className='text-2xl text-mainColor font-semibold mb-2'>Admin Panel</h1>
       <div className='font-medium flex flex-col gap-3'>
       <label>
         <p className="text-[18px] text-mainColor ">Email:</p>
@@ -69,10 +64,8 @@ const Login = () => {
       </label>
 
       <button type="submit" className="bg-backgroundColor text-mainColor font-semibold py-2 my-2 rounded w-40 border hover:opacity-85">LOGIN HERE</button>
-      <hr />
-    <div className='flex text-secondaryColor justify-center gap-2'>
-    Do not have an Account? <Link className='text-mainColor underline' to={'/signup'}>Click here</Link>
-    </div>
+
+   
       </div>
       </form>
     </div>

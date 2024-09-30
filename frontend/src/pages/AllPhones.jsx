@@ -5,7 +5,7 @@ const AllPhones = () => {
     const [showCategory,setShowCategory] = useState(false)
 
   return (
-    <div className='text-mainColor flex flex-col sm:flex-row'>
+    <div className='text-mainColor flex flex-col sm:flex-row min-h-screen'>
       {/* Filter Category */}
       <div className='pl-10 pt-10 w-[250px]'>
         <div className='border border-backgroundColor p-4'>
@@ -74,7 +74,7 @@ const AllPhones = () => {
                 <option value="high-to-low">Sort by: High to Low</option>
             </select>
         </div>
-        <hr className='h-1 bg-secondaryColor w-[98%] sm:w-[95%] mt-1' />
+        <hr className='h-0.5 bg-secondaryColor w-[98%] sm:w-[95%] mt-1 rounded-full' />
     </div>
 
     </div>
