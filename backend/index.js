@@ -1,27 +1,32 @@
-import express from 'express'
-import cors from 'cors'
-import 'dotenv/config'
-import connectDB from './config/db.js'
-import userRouter from './routes/userRoutes.js'
-import PhoneRouter from './routes/phoneRoute.js'
+import express from 'express';
+import cors from 'cors';
+import 'dotenv/config';
+import connectDB from './config/db.js';
+import userRouter from './routes/userRoutes.js';
+import PhoneRouter from './routes/phoneRoute.js';
+
 
 // App Config
-const app = express()
-const port = process.env.PORT || 8080
-connectDB()
+const app = express();
+const port = process.env.PORT || 8080;
+connectDB();
 
-//middlewares
-app.use(express.json())
-app.use(cors())
+
+
+// Middleware
+app.use(express.json()); // For parsing JSON bodies
+app.use(cors()); // To enable CORS for cross-origin requests
+
 
 
 // API Endpoints
-app.use('/api/user',userRouter)
-app.use('/api/phone',PhoneRouter)
+app.use('/api/user', userRouter);
+app.use('/api/phone', PhoneRouter);
 
-app.get('/',(req,res)=>{
-    res.send("API WORKING")
-})
+// Root route for testing
+app.get('/', (req, res) => {
+  res.send('API WORKING');
+});
 
-
-app.listen(port, ()=> console.log("Server started on PORT: "+port))
+// Start the server
+app.listen(port, () => console.log(`Server started on PORT: ${port}`));
