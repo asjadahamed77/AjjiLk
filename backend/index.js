@@ -3,6 +3,7 @@ import cors from 'cors'
 import 'dotenv/config'
 import connectDB from './config/db.js'
 import userRouter from './routes/userRoutes.js'
+import PhoneRouter from './routes/phoneRoute.js'
 
 // App Config
 const app = express()
@@ -16,6 +17,7 @@ app.use(cors())
 
 // API Endpoints
 app.use('/api/user',userRouter)
+app.use('/api/phone',PhoneRouter)
 
 app.get('/',(req,res)=>{
     res.send("API WORKING")
