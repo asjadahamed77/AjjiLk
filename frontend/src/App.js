@@ -30,7 +30,7 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/phone-details/:id' element={<PhoneDetails />} />
+        <Route path='/phone-details/:phoneId' element={<PhoneDetails />} />
       
       </Routes>
       </div>
