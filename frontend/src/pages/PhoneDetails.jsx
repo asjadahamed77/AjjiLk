@@ -42,9 +42,9 @@ const PhoneDetails = () => {
                 />
               ))}
             </div>
-            <div className="w-full sm:w-[80%]">
+            <div className="w-full p-3 sm:w-[80%]">
               <img
-                className="w-full h-auto hover:scale-105 duration-300 transition-all ease-linear"
+                className="w-full  border-2 border-mainColor h-auto hover:scale-105 duration-300 transition-all ease-linear"
                 src={image}
                 alt="SelectedPhoneImage"
               />

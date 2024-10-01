@@ -10,7 +10,7 @@ const phones = [
         phoneImages: [phone1,phone2,phone3,phone4],
         phoneBrand:"iphone",
         phoneStorage: "256",
-        phonePrice: 225000,
+        phonePrice: 125000,
         phoneCondition: "brandnew",
         phoneNumber: 761257751,
         phoneFeature1: "Superb Battery Life with 95% battery health",

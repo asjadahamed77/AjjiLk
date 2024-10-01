@@ -1,3 +1,4 @@
+import { v2 as cloudinary } from "cloudinary";
 import phoneModel from "../models/phoneModel.js";
 import userModel from "../models/userModel.js";
 const addPhone = async (req, res) => {

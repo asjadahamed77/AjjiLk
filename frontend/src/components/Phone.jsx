@@ -7,9 +7,9 @@ const Phone = ({id,phoneImages,phoneName,phoneBrand,phonePrice}) => {
     <Link to={`/phone-details/${id}`} >
       <div className='overflow-hidden flex flex-col p-2 px-4 text-mainColor shadow-md rounded-[20px] hover:scale-90 duration-500 transition-all ease-in-out'>
         <div className='flex justify-center'>
-            <img src={phoneImages[0]} alt="" />
+            <img className='border border-mainColor rounded-md' src={phoneImages[0]} alt="" />
         </div>
-        <p className='text-base sm:text-[22px] font-semibold'>{phoneName}</p>
+        <p className='text-base sm:text-[22px] font-semibold mt-1'>{phoneName}</p>
         <div className='flex justify-between mt-1'>
             <div>
                 <p className='uppercase text-sm sm:text-base'>{phoneBrand}</p>

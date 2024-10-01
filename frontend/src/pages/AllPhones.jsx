@@ -8,7 +8,7 @@ const AllPhones = () => {
   const { phones } = useContext(ShopContext); // Context containing all phones
   const [filterPhones, setFilterPhones] = useState([]); // Filtered phones
   const [category, setCategory] = useState([]); // Track selected categories
-  const [sortType, setSortType] = useState("relevant"); // Sorting type
+  const [sortType, setSortType] = useState("relavent"); // Sorting type
 
   // Toggle filter panel visibility
   const toggleCategory = () => {
@@ -32,9 +32,7 @@ const AllPhones = () => {
   const applyFilter = () => {
     let phonesCopy = phones.slice(); // Create a copy of the phones array
 
-    // Debugging: Check category and phones state
-    console.log("Selected categories: ", category);
-    console.log("All phones: ", phones);
+    
 
     // Filter phones if a category is selected
     if (category.length > 0) {
@@ -42,15 +40,33 @@ const AllPhones = () => {
     }
 
     setFilterPhones(phonesCopy);
-
-    // Debugging: Check the filtered phones
-    console.log("Filtered phones: ", phonesCopy);
   };
+
+  const sortProduct = () => {
+    let fpCopy =  filterPhones.slice()
+    switch(sortType){
+      case 'low-to-high':
+        setFilterPhones(fpCopy.sort((a,b)=>(a.phonePrice - b.phonePrice)));
+        break;
+
+      case 'high-to-low':
+        setFilterPhones(fpCopy.sort((a,b)=>(b.phonePrice - a.phonePrice)));
+        break;
+
+        default:
+          applyFilter();
+          break;
+    }
+  }
 
   // Reapply filter whenever `category` or `phones` changes
   useEffect(() => {
     applyFilter();
   }, [category, phones]);
+
+  useEffect(()=>{
+    sortProduct()
+  },[sortType])
 
   return (
     <div className="text-mainColor flex flex-col sm:flex-row min-h-screen">
@@ -195,8 +211,8 @@ const AllPhones = () => {
           <h1 className="text-xl sm:text-2xl text-mainColor font-semibold">
             All Mobile Phones
           </h1>
-          <select className="md:mr-8 lg:mr-10 xl:mr-16 mr-4 text-sm sm:text-base rounded-lg bg-lightColor border border-mainColor text-mainColor">
-            <option value="">Sort by: Relevant</option>
+          <select onChange={(e)=>setSortType(e.target.value)} className="md:mr-8 lg:mr-10 xl:mr-16 mr-4 text-sm sm:text-base rounded-lg bg-lightColor border border-mainColor text-mainColor">
+            <option value="relavent">Sort by: Relevant</option>
             <option value="low-to-high">Sort by: Low to High</option>
             <option value="high-to-low">Sort by: High to Low</option>
           </select>
