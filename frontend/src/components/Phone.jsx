@@ -9,12 +9,12 @@ const Phone = ({id,phoneImages,phoneName,phoneBrand,phonePrice}) => {
         <div className='flex justify-center'>
             <img src={phoneImages[0]} alt="" />
         </div>
-        <p className='text-[22px] font-semibold'>{phoneName}</p>
-        <div className='flex justify-between'>
+        <p className='text-base sm:text-[22px] font-semibold'>{phoneName}</p>
+        <div className='flex justify-between mt-1'>
             <div>
-                <p className='uppercase'>{phoneBrand}</p>
+                <p className='uppercase text-sm sm:text-base'>{phoneBrand}</p>
             </div>
-            <div className='flex gap-1 text-sm text-yellow-500'>
+            <div className='flex gap-1 text-xs sm:text-sm text-yellow-500'>
                 <div>
                 <FaStar />
                 </div>

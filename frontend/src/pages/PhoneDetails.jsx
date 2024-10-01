@@ -27,7 +27,7 @@ const PhoneDetails = () => {
   return phoneData ? (
     <div>
       {/* Phone Image and Details */}
-      <div>
+      <div className="">
         {/* Left Side */}
         <div className="flex flex-col md:flex-row gap-10 p-8 sm:p-12 md:p-16">
           <div className="flex-1 flex flex-col-reverse gap-4 sm:flex-row">
@@ -80,9 +80,9 @@ const PhoneDetails = () => {
                 </div>
               </div>
             </div>
-<div className="grid grid-cols-[2.5fr_0.5fr] gap-2 box-border">
+<div className="flex gap-6 box-border">
 <p className="text-secondaryColor border box-border bg-slate-100 w-52 text-center py-2 rounded mt-4 text-lg">Phone Storage: <span>{phoneData.phoneStorage}</span>GB</p>
-<p className="text-secondaryColor border box-border bg-slate-100 px-2 text-center py-2 rounded  mt-4 text-lg"><span className="uppercase">{phoneData.phoneCondition}</span></p>
+<p className="text-secondaryColor border box-border bg-slate-100  text-center py-2 rounded  mt-4 text-lg"><span className="uppercase">{phoneData.phoneCondition}</span></p>
 </div>
             <p className="text-mainColor font-semibold  mt-4 text-lg">Contact Number: <span>{phoneData.phoneNumber}</span></p>
           
@@ -97,6 +97,8 @@ const PhoneDetails = () => {
           </div>
         </div>
       </div>
+      <hr />
+      
     </div>
   ) : (
     <div className="opacity-0"></div>
