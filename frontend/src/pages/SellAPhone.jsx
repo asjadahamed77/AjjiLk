@@ -4,9 +4,11 @@ import sampleImage from '../assets/sampleImage.jpg';
 import backendUrl from '../helpers/backendUrl';
 import { toast } from 'react-toastify';
 import { ShopContext } from '../context/ShopContext';
+import { ClipLoader } from 'react-spinners';
 
 const SellAPhone = () => {
   const { token } = useContext(ShopContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   // State for form data and images
   const [image1, setImage1] = useState(null);
@@ -34,6 +36,7 @@ const SellAPhone = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Start spinner on form submission
 
     try {
       const data = new FormData();
@@ -68,6 +71,8 @@ const SellAPhone = () => {
     } catch (error) {
       console.error(error);
       toast.error('An error occurred. Please try again.');
+    } finally {
+      setIsLoading(false); // Stop the spinner once the API request finishes
     }
   };
 
@@ -75,11 +80,12 @@ const SellAPhone = () => {
     <div className='min-h-screen flex flex-col sm:pt-10 sm:pl-10 pt-8 pl-4 pb-6 text-mainColor font-medium'>
       <h1 className='text-2xl'>Sell your phone with Ajji-Lk</h1>
       <form className='flex flex-col gap-4 mt-4' onSubmit={handleSubmit}>
+        {/* Image upload section */}
         <p className='text-[18px]'>Phone Images:</p>
         <div className='flex gap-2 mt-2'>
           <label htmlFor='image1'>
             <img
-              className='w-20'
+              className='w-20 border border-mainColor'
               src={image1 ? URL.createObjectURL(image1) : sampleImage}
               alt=''
             />
@@ -92,7 +98,7 @@ const SellAPhone = () => {
           </label>
           <label htmlFor='image2'>
             <img
-              className='w-20'
+              className='w-20 border border-mainColor'
               src={image2 ? URL.createObjectURL(image2) : sampleImage}
               alt=''
             />
@@ -105,7 +111,7 @@ const SellAPhone = () => {
           </label>
           <label htmlFor='image3'>
             <img
-              className='w-20'
+              className='w-20 border border-mainColor'
               src={image3 ? URL.createObjectURL(image3) : sampleImage}
               alt=''
             />
@@ -118,7 +124,7 @@ const SellAPhone = () => {
           </label>
           <label htmlFor='image4'>
             <img
-              className='w-20'
+              className='w-20 border border-mainColor'
               src={image4 ? URL.createObjectURL(image4) : sampleImage}
               alt=''
             />
@@ -131,6 +137,7 @@ const SellAPhone = () => {
           </label>
         </div>
 
+        {/* Form fields */}
         <label>
           <p className='text-[18px]'>Phone Name:</p>
           <input
@@ -265,10 +272,11 @@ const SellAPhone = () => {
         </label>
 
         <button
-          className='flex items-start px-4 py-1 bg-mainColor text-lightColor max-w-[170px] justify-center rounded-lg hover:opacity-85'
+          className='flex items-center px-4 py-1 bg-mainColor text-lightColor max-w-[170px] justify-center rounded-lg hover:opacity-85'
           type='submit'
+          disabled={isLoading} // Disable button when loading
         >
-          SELL THIS PHONE
+          {isLoading ? <ClipLoader size={20} color={"#fff"} /> : 'SELL THIS PHONE'}
         </button>
       </form>
     </div>

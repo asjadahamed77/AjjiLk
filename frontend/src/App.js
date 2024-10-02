@@ -23,6 +23,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/phones' element={<AllPhones />} />
+        <Route path='/phones/:phoneBrand' element={<AllPhones />} />
         <Route path='/sell-a-phone' element={<SellAPhone />} />
         <Route path='/my-listings' element={<MyListings />} />
         <Route path='/contact-us' element={<ContactUs />} />

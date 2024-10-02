@@ -14,7 +14,7 @@ const ShopContextProvider = (props) => {
     try {
       const response = await axios.get(backendUrl+"/api/phone/approved")
       if(response.data.success){
-        setPhones(response.data.phones)
+        setPhones(response.data.phones.reverse())
       }else{
         toast.error(response.error.message)
       }

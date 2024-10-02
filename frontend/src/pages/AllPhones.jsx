@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { FaArrowAltCircleDown } from "react-icons/fa";
 import { ShopContext } from "../context/ShopContext";
 import Phone from "../components/Phone";
+import { useNavigate, useParams } from "react-router-dom";
 
 const AllPhones = () => {
+  const {phoneBrand} = useParams()
+  const navigate = useNavigate()
   const [showCategory, setShowCategory] = useState(false); // Toggle category filter visibility
   const { phones } = useContext(ShopContext); // Context containing all phones
   const [filterPhones, setFilterPhones] = useState([]); // Filtered phones
-  const [category, setCategory] = useState([]); // Track selected categories
   const [sortType, setSortType] = useState("relavent"); // Sorting type
 
   // Toggle filter panel visibility
@@ -15,31 +17,21 @@ const AllPhones = () => {
     setShowCategory(!showCategory);
   };
 
-  // Handle category filter selection
-  const toggleCategoryFilter = (e) => {
-    const value = e.target.value.toLowerCase(); // Ensure value is in lowercase
-    // Check if the category is already selected
-    if (category.includes(value)) {
-      // Remove category if already selected
-      setCategory((prev) => prev.filter((phone) => phone !== value));
-    } else {
-      // Add category if not selected
-      setCategory((prev) => [...prev, value]);
-    }
-  };
+  
 
   // Apply filter based on selected categories
   const applyFilter = () => {
-    let phonesCopy = phones.slice(); // Create a copy of the phones array
+
+
+    if(phoneBrand){
+      setFilterPhones(phones.filter(item => item.phoneBrand === phoneBrand))
+    }else{
+      setFilterPhones(phones)
+    }
 
     
 
-    // Filter phones if a category is selected
-    if (category.length > 0) {
-      phonesCopy = phonesCopy.filter((phone) => category.includes(phone.phoneBrand.toLowerCase()));
-    }
-
-    setFilterPhones(phonesCopy);
+    
   };
 
   const sortProduct = () => {
@@ -62,7 +54,7 @@ const AllPhones = () => {
   // Reapply filter whenever `category` or `phones` changes
   useEffect(() => {
     applyFilter();
-  }, [category, phones]);
+  }, [phones,phoneBrand]);
 
   useEffect(()=>{
     sortProduct()
@@ -71,10 +63,10 @@ const AllPhones = () => {
   return (
     <div className="text-mainColor flex flex-col sm:flex-row min-h-screen">
       {/* Filter Category */}
-      <div className="pl-10 pt-10 w-[250px]">
-        <div className="border border-backgroundColor p-2 sm:p-4">
+      <div className="px-10 sm:px-0 sm:pl-10 pt-10 w-full sm:w-[250px]">
+        <div className="sm:border border-backgroundColor ">
           <div className="flex gap-2 items-center">
-            <p className="font-semibold sm:text-[20px] text-base">
+            <p className="font-semibold sm:text-[20px] text-base pl-4 pt-4">
               Filter Category
             </p>
             <div
@@ -89,119 +81,23 @@ const AllPhones = () => {
           <div
             className={`${
               showCategory ? "flex" : "hidden"
-            } sm:flex mt-3 ml-3 flex-col gap-3`}
+            } sm:flex mt-3 ml-3 flex-col gap-2`}
           >
-            {/* Category Checkboxes */}
-            <label htmlFor="iphone" className="flex items-center gap-2">
-              <input
-                onChange={toggleCategoryFilter}
-                type="checkbox"
-                id="iphone"
-                value="iphone"
-              />
-              <p className="font-medium text-base">iPhone</p>
-            </label>
 
-            <label htmlFor="samsung" className="flex items-center gap-2">
-              <input
-                onChange={toggleCategoryFilter}
-                type="checkbox"
-                id="samsung"
-                value="samsung"
-              />
-              <p className="font-medium text-base">Samsung</p>
-            </label>
+<p onClick={()=> phoneBrand === 'iphone'? navigate('/phones'): navigate('/phones/iphone')} className={`p-2 pl-4 border-2 rounded cursor-pointer ${phoneBrand === 'iphone'?'bg-green-100 text-mainColor':""}`} >iPhones</p>
+<p onClick={()=> phoneBrand === 'samsung'? navigate('/phones'): navigate('/phones/samsung')} className={`p-2 pl-4 border-2 rounded cursor-pointer ${phoneBrand === 'samsung'?'bg-green-100 text-mainColor':""}`} >Samsung</p>
+<p onClick={()=> phoneBrand === 'sony'? navigate('/phones'): navigate('/phones/sony')} className={`p-2 pl-4 border-2 rounded cursor-pointer ${phoneBrand === 'sony'?'bg-green-100 text-mainColor':""}`} >Sony</p>
+<p onClick={()=> phoneBrand === 'xiaomi'? navigate('/phones'): navigate('/phones/xiaomi')} className={`p-2 pl-4 border-2 rounded cursor-pointer ${phoneBrand === 'xiaomi'?'bg-green-100 text-mainColor':""}`} >Xiaomi</p>
+<p onClick={()=> phoneBrand === 'vivo'? navigate('/phones'): navigate('/phones/vivo')} className={`p-2 pl-4 border-2 rounded cursor-pointer ${phoneBrand === 'vivo'?'bg-green-100 text-mainColor':""}`} >Vivo</p>
+<p onClick={()=> phoneBrand === 'oppo'? navigate('/phones'): navigate('/phones/oppo')} className={`p-2 pl-4 border-2 rounded cursor-pointer ${phoneBrand === 'oppo'?'bg-green-100 text-mainColor':""}`} >Oppo</p>
+<p onClick={()=> phoneBrand === 'google'? navigate('/phones'): navigate('/phones/google')} className={`p-2 pl-4 border-2 rounded cursor-pointer ${phoneBrand === 'google'?'bg-green-100 text-mainColor':""}`} >Google</p>
+<p onClick={()=> phoneBrand === 'nokia'? navigate('/phones'): navigate('/phones/nokia')} className={`p-2 pl-4 border-2 rounded cursor-pointer ${phoneBrand === 'nokia'?'bg-green-100 text-mainColor':""}`} >Nokia</p>
+<p onClick={()=> phoneBrand === 'oneplus'? navigate('/phones'): navigate('/phones/oneplus')} className={`p-2 pl-4 border-2 rounded cursor-pointer ${phoneBrand === 'oneplus'?'bg-green-100 text-mainColor':""}`} >OnePlus</p>
+<p onClick={()=> phoneBrand === 'realme'? navigate('/phones'): navigate('/phones/realme')} className={`p-2 pl-4 border-2 rounded cursor-pointer ${phoneBrand === 'realme'?'bg-green-100 text-mainColor':""}`} >Realme</p>
+<p onClick={()=> phoneBrand === 'huawei'? navigate('/phones'): navigate('/phones/huawei')} className={`p-2 pl-4 border-2 rounded cursor-pointer ${phoneBrand === 'huawei'?'bg-green-100 text-mainColor':""}`} >Huawei</p>
 
-            <label htmlFor="google" className="flex items-center gap-2">
-              <input
-                onChange={toggleCategoryFilter}
-                type="checkbox"
-                id="google"
-                value="google"
-              />
-              <p className="font-medium text-base">Google</p>
-            </label>
-
-            <label htmlFor="xiaomi" className="flex items-center gap-2">
-              <input
-                onChange={toggleCategoryFilter}
-                type="checkbox"
-                id="xiaomi"
-                value="xiaomi"
-              />
-              <p className="font-medium text-base">Xiaomi</p>
-            </label>
-
-            <label htmlFor="vivo" className="flex items-center gap-2">
-              <input
-                onChange={toggleCategoryFilter}
-                type="checkbox"
-                id="vivo"
-                value="vivo"
-              />
-              <p className="font-medium text-base">Vivo</p>
-            </label>
-
-            <label htmlFor="oneplus" className="flex items-center gap-2">
-              <input
-                onChange={toggleCategoryFilter}
-                type="checkbox"
-                id="oneplus"
-                value="oneplus"
-              />
-              <p className="font-medium text-base">OnePlus</p>
-            </label>
-
-            <label htmlFor="oppo" className="flex items-center gap-2">
-              <input
-                onChange={toggleCategoryFilter}
-                type="checkbox"
-                id="oppo"
-                value="oppo"
-              />
-              <p className="font-medium text-base">Oppo</p>
-            </label>
-
-            <label htmlFor="huawei" className="flex items-center gap-2">
-              <input
-                onChange={toggleCategoryFilter}
-                type="checkbox"
-                id="huawei"
-                value="huawei"
-              />
-              <p className="font-medium text-base">Huawei</p>
-            </label>
-
-            <label htmlFor="nokia" className="flex items-center gap-2">
-              <input
-                onChange={toggleCategoryFilter}
-                type="checkbox"
-                id="nokia"
-                value="nokia"
-              />
-              <p className="font-medium text-base">Nokia</p>
-            </label>
-
-            <label htmlFor="sony" className="flex items-center gap-2">
-              <input
-                onChange={toggleCategoryFilter}
-                type="checkbox"
-                id="sony"
-                value="sony"
-              />
-              <p className="font-medium text-base">Sony</p>
-            </label>
-
-            <label htmlFor="realme" className="flex items-center gap-2">
-              <input
-                onChange={toggleCategoryFilter}
-                type="checkbox"
-                id="realme"
-                value="realme"
-              />
-              <p className="font-medium text-base">Realme</p>
-            </label>
           </div>
+         
         </div>
       </div>
 
@@ -220,7 +116,7 @@ const AllPhones = () => {
         <hr className="h-0.5 bg-secondaryColor w-[98%] sm:w-[95%] mt-1 rounded-full" />
 
         {/* Display Filtered Phones */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
           {filterPhones.map((phone, index) => (
             <Phone
               key={index}

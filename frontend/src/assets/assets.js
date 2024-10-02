@@ -3,7 +3,19 @@ import phone2 from './nokia.png'
 import phone3 from './iPhone.png'
 import phone4 from './nokia.png'
 
-const phones = [
+import apple from "./iPhone.png";
+import samsung from "./samsung.png";
+import sony from "./sony.png";
+import xiaomi from "./xiaomi.png";
+import realme from "./realme.png";
+import nokia from "./nokia.png";
+import google from "./google-pixel.png";
+import oneplus from "./oneplus.png";
+import oppo from "./oppo.png";
+import vivo from "./vivo.png";
+import huawei from "./huawei.png";
+
+export const phones = [
     {
         _id: "0001",
         phoneName: "iPhone 15 Pro Max",
@@ -118,4 +130,51 @@ const phones = [
     }
 ]
 
-export default phones
+export const phoneBrandData = [
+    {
+        phoneBrand: 'iphone',
+        image: apple
+    },
+    {
+        phoneBrand: 'samsung',
+        image: samsung
+    },
+    {
+        phoneBrand: 'sony',
+        image: sony
+    },
+    {
+        phoneBrand: 'xiaomi',
+        image: xiaomi
+    },
+   
+    {
+        phoneBrand: 'realme',
+        image: realme
+    },
+    {
+        phoneBrand: 'nokia',
+        image: nokia
+    },
+    {
+        phoneBrand: 'google',
+        image: google
+    },
+    {
+        phoneBrand: 'oneplus',
+        image: oneplus
+    },
+    {
+        phoneBrand: 'oppo',
+        image: oppo
+    },
+    {
+        phoneBrand: 'vivo',
+        image: vivo
+    },
+    {
+        phoneBrand: 'huawei',
+        image: huawei
+    },
+]
+

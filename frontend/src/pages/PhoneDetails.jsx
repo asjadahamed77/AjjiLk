@@ -81,7 +81,7 @@ const PhoneDetails = () => {
               </div>
             </div>
 <div className="flex gap-6 box-border">
-<p className="text-secondaryColor border box-border bg-slate-100 w-52 text-center py-2 rounded mt-4 text-lg">Phone Storage: <span>{phoneData.phoneStorage}</span>GB</p>
+<p className="text-secondaryColor border box-border bg-slate-100 w-52 text-center py-2 rounded mt-4 text-lg">Phone Storage: <span className="uppercase">{phoneData.phoneStorage}</span></p>
 <p className="text-secondaryColor border box-border bg-slate-100  text-center py-2 rounded  mt-4 text-lg"><span className="uppercase">{phoneData.phoneCondition}</span></p>
 </div>
             <p className="text-mainColor font-semibold  mt-4 text-lg">Contact Number: <span>{phoneData.phoneNumber}</span></p>

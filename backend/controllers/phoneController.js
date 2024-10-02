@@ -104,15 +104,16 @@ const rejectPhone = async (req, res) => {
     }
 };
 
-// Fetch all user-added phones (both approved and unapproved)
+// Fetch all phones added by the current user
 const getUserAddedPhones = async (req, res) => {
-    try {
-        const phones = await phoneModel.find({}); // You can filter here if needed (e.g., by user ID or approval status)
-        res.json({ success: true, phones });
-    } catch (error) {
-        console.error("Error fetching phones:", error);
-        res.json({ success: false, message: "Server error" });
-    }
+  try {
+    const userId = req.userId; // Assuming userId is attached to the request
+    const phones = await phoneModel.find({ userId }); // Fetch phones by userId
+    res.json({ success: true, phones });
+  } catch (error) {
+    console.error("Error fetching user phones:", error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
 };
 
 
@@ -127,11 +128,46 @@ const getApprovedPhones = async (req, res) => {
     }
 };
 
+// Function to track phone status (Approved/Rejected)
+const trackPhoneStatus = async (req, res) => {
+  const { phoneId } = req.params;
+
+  try {
+    const phone = await phoneModel.findById(phoneId);
+
+    if (!phone) {
+      return res.status(404).json({ success: false, message: 'Phone not found' });
+    }
+
+    // Send the phone status (approved or rejected)
+    res.status(200).json({ success: true, status: phone.isApproved });
+  } catch (error) {
+    console.error('Error while tracking phone status:', error);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+};
+
+// Function to remove a phone listing
+const removePhoneListing = async (req, res) => {
+  const { phoneId } = req.params;
+
+  try {
+    const phone = await phoneModel.findByIdAndDelete(phoneId);
+
+    if (!phone) {
+      return res.status(404).json({ success: false, message: 'Phone not found or already deleted' });
+    }
+
+    res.status(200).json({ success: true, message: 'Phone successfully deleted' });
+  } catch (error) {
+    console.error('Error while removing phone:', error);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+};
 
 
 
 
 
 
-
-export  {addPhone,approvePhone,rejectPhone,getUserAddedPhones,getApprovedPhones};
+export  {addPhone,approvePhone,rejectPhone,getUserAddedPhones,getApprovedPhones,trackPhoneStatus,removePhoneListing};

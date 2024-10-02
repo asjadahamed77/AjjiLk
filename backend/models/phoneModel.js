@@ -13,7 +13,7 @@ const phoneSchema = new mongoose.Schema({
     phoneFeature3: { type: String },
     phoneFeature4: { type: String },
     isApproved: { type: Boolean, default: false }, 
-    date: { type: Number, required: true }
+    date: { type: Number, required: true },
 });
 
 const phoneModel = mongoose.models.phone || mongoose.model('phone', phoneSchema);
