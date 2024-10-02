@@ -2,23 +2,23 @@ import React, { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import Phone from './Phone';
 
-const HomeiPhones = () => {
+const HomeSamsung = () => {
   const { phones } = useContext(ShopContext);
 
   return (
     <div className='my-6 px-6'>
       <div className="text-start">
         <h1 className="text-mainColor text-3xl font-semibold">
-          Shop iPhones at Great Prices
+          Shop Various Samsung at Lower Prices
         </h1>
         <p className="text-secondaryColor text-[20px]">
-          Choose from a range of iPhone models, all verified by us.
+          Choose from a range of Samsung models, all verified by us.
         </p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
         {
           phones
-            .filter(phone => phone.phoneBrand === 'iphone') // Filter for iPhone
+            .filter(phone => phone.phoneBrand === 'samsung') // Filter for Samsung
             .map((phone, index) => (
               <Phone
                 key={index}
@@ -35,4 +35,4 @@ const HomeiPhones = () => {
   );
 }
 
-export default HomeiPhones;
+export default HomeSamsung;
