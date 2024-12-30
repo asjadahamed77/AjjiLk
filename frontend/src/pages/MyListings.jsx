@@ -16,7 +16,7 @@ const MyListings = () => {
       try {
         const response = await axios.get(`${backendUrl}/api/phone/added-phones`, {
           headers: {
-            token, // Attach the token in the headers
+            token, 
           },
         });
         setPhones(response.data.phones);
